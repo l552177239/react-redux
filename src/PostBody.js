@@ -1,16 +1,19 @@
 import React from 'react'
-import store from './store'
+import { connect } from 'react-redux'
 
-class PostBody extends React.Component {
-  render() {
-    let data = store.getState()
-    return (
+class PostBody extends React.Component{
+  render(){
+    return(
       <div className="post-body">
         PostBody<br />
-        <span>{data.length}</span>
+        <span>{this.props.data.length}</span>
       </div>
     )
   }
 }
 
-export default PostBody
+const mapStateToProps = (state) => ({
+  data: state
+})
+
+export default connect(mapStateToProps)(PostBody)
