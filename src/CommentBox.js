@@ -5,21 +5,24 @@ class CommentBox extends React.Component{
   constructor(){
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {
+      data:store.getState()
+    }
   }
   handleSubmit(e){
     e.preventDefault()
     let newcomment = this.comment.value
     console.log(store.getState())
     store.dispatch({type:'ADD_COMMENT',data:newcomment})
+    this.setState({data:store.getState()})
     console.log(store.getState())
     this.comment.value = ''
   }
   render(){
-    let data = store.getState()
     return(
       <div className="comment-box">
        {
-        data.map(item =>
+        this.state.data.map(item =>
           <div key={Math.random()}>
             {item.comment}
           </div>
