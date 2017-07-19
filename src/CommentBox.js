@@ -9,8 +9,9 @@ class CommentBox extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     let newcomment = this.comment.value
-    console.log(newcomment)
-    // this.setState({data:[...this.state.data,{comment:newcomment}]})
+    console.log(store.getState())
+    store.dispatch({type:'ADD_COMMENT',data:newcomment})
+    console.log(store.getState())
     this.comment.value = ''
   }
   render(){
