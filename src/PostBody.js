@@ -1,11 +1,13 @@
 import React from 'react'
+import store from './store'
 
 class PostBody extends React.Component {
   render() {
+    let data = store.getState()
     return (
       <div className="post-body">
         PostBody<br />
-        <span>{this.props.data.length}</span>
+        <span>{data.length}</span>
       </div>
     )
   }
